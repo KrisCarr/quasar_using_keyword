@@ -1,5 +1,7 @@
 <template>
   <q-page class="row items-center justify-evenly">
+    <q-btn label="test" @click="on_click" />
+
     <example-component
       title="Example component"
       active
@@ -13,6 +15,7 @@
 import { ref } from 'vue';
 import { Todo, Meta } from 'components/models';
 import ExampleComponent from 'components/ExampleComponent.vue';
+import { defer } from 'src/defer';
 
 defineOptions({
   name: 'IndexPage',
@@ -44,4 +47,11 @@ const todos = ref<Todo[]>([
 const meta = ref<Meta>({
   totalCount: 1200,
 });
+
+function on_click() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  using _g = defer(() => {
+    console.log('done');
+  });
+}
 </script>
